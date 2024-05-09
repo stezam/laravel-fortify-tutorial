@@ -2,6 +2,11 @@
 # Digital Penguin
 - Date 09-05-2024
 
+- Youtube link
+
+
+[Laravel User Login and Management System](https://www.youtube.com/playlist?list=PLxFwlLOncxFLxT3ZxYPw7-hCrXhdZHg1W)
+
 ---
 
 
