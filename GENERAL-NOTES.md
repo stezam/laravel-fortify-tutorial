@@ -64,6 +64,32 @@ import 'bootstrap'
 npm run dev
 ``
 
+---
+
+# Installing Laravel Fortify
+
+
+To get started, install Fortify using the Composer package manager:
+```
+composer require laravel/fortify
+```
+
+Next, publish Fortify's resources using the vendor:publish command:
+
+```
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+```
+
+This command will publish Fortify's actions to your app/Actions directory, which will be created if it does not exist. In addition, the FortifyServiceProvider, configuration file, and all necessary database migrations will be published.
+
+Next, you should migrate your database:
+
+```
+php artisan migrate
+```
+
+
+
 
 
 
