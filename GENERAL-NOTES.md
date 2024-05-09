@@ -15,11 +15,13 @@ npm i bootstrap sass @popperjs/core --save-dev
 2. Configure Vite and dependencies Rename the file: resources/css/app.css to: resources/css/app.scss Open the vite.config.js file found in the root of the project and change the reference resources/css/app.css to resources/css/app.scss
 
 
-...
- **vite.config.js**
 
-**import { defineConfig } from 'vite';**
-**import laravel from 'laravel-vite-plugin';**
+```
+vite.config.js
+
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+```
 ```
 export default defineConfig({
     plugins: [
