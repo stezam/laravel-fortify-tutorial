@@ -41,9 +41,9 @@ In the resources/css/app.scss file import Bootstrap by adding the following line
 In the file resources/js/bootstrap.js add the following lines
 
 
-**import * as Popper from '@popperjs/core'**\
+`**import * as Popper from '@popperjs/core'**\
 **window.Popper = Popper**\
-**import 'bootstrap'**\
+**import 'bootstrap'**`\
 
 
 3. Change .blade for Hot reloading
