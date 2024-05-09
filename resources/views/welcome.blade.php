@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{csrf_token()}}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <title>{{ config('app.name', 'User Management System')}}</title>
 
-        @vite(['resources/js/app.js', 'resources/css/app.scss'])
-    </head>
-    <body class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="h1 text-danger">Laravel Fortify </h1>
-                    <button type="submit" class="btn btn-success btn-sm">Submit</button>
-                </div>
-            </div>
+    <!-- Styles -->
+    <!-- <link rel="stylesheet" href="{{asset('build/assets/app-26966599.css')}}"> -->
+
+    <!-- JS -->
+    <!-- <script src="{{asset('build/assets/app-e2f38b31.js')}}"></script> -->
+
+    @vite(['resources/js/app.js', 'resources/css/app.scss'])
+</head>
+
+<body>
+    <div>
+        @if (Route::has('login'))
+        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+            @auth
+            <a href="{{ url('/dashboard') }}"
+                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+            @else
+            <a href="{{ route('login') }}"
+                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                in</a>
+
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}"
+                class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+            @endif
+            @endauth
         </div>
-    </body>
+        @endif
+    </div>
+    <h1>Hello Users</h1>
+</body>
+</body>
+
 </html>
