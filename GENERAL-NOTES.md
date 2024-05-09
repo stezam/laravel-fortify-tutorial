@@ -28,7 +28,7 @@ npm i bootstrap sass @popperjs/core --save-dev
             **refresh: true,**\
         **}),**\
     **],**\
-**});**\
+**});**
 
 ..
 
@@ -43,7 +43,7 @@ In the file resources/js/bootstrap.js add the following lines
 
 **import * as Popper from '@popperjs/core'**\
 **window.Popper = Popper**\
-**import 'bootstrap'**\
+**import 'bootstrap'**
 
 
 3. Change .blade for Hot reloading
