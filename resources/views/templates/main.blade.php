@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link " aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Users</a>
@@ -40,7 +40,11 @@
                     @if (Route::has('login'))
                     <div class="">
                         @auth
-                        <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                        <a href="{{ url('/') }}" class="">Home</a>                        
+                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form action="{{route('logout')}}" method="post" id="logout-form" style="display:none">
+                            @csrf
+                        </form>
                         @else
                         <a href="{{ route('login') }}" class="">Log
                             in</a>
