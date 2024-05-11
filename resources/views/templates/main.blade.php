@@ -38,20 +38,31 @@
 
                 <div class="form-inlind my-2 my-lg-8">
                     @if (Route::has('login'))
-                    <div class="">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         @auth
-                        <a href="{{ url('/') }}" class="">Home</a>                        
-                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <li class="nav-item">
+                            <a href="{{ url('/') }}" class="nav-link">Home</a>                               
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        </li>
                         <form action="{{route('logout')}}" method="post" id="logout-form" style="display:none">
                             @csrf
                         </form>
-                        @else
-                        <a href="{{ route('login') }}" class="">Log
-                            in</a>
+                        </ul>
 
-                        @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="">Register</a>
-                        @endif
+                        @else
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                        </li>
+                        <li class="nav-item">
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="nav-link">Register</a>
+                            @endif
+                        </li>
+                        </ul>   
+
                         @endauth
                     </div>
                     @endif
@@ -61,7 +72,7 @@
     </nav>
 
     <main class="container">
-        
+        @include('partials.alerts')
         @yield('content')
     </main>
 </body>
