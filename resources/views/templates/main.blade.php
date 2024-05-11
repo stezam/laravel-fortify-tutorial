@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{csrf_token()}}">
 
-    <title>{{ config('app.name', 'User Management System')}}</title>
+    <title>@yield('title', config('app.name', 'User Management System'))</title>
 
     <!-- JS -->
     <!-- <script src="{{asset('build/assets/app-e2f38b31.js')}}"></script> -->
