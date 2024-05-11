@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         // dd('Index method on User Controller');
-        $users = User::all();
+        $users = User::latest()->paginate(10);
         return view('admin.users.index',compact('users'));
     }
 
@@ -40,6 +40,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
+
     }
 
     /**
@@ -63,6 +64,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route('admin.users.index');
     }
 }
