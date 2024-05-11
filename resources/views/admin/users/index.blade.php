@@ -14,10 +14,10 @@
 <div class="card">
 
 
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover table-responsive">
         <thead>
             <tr>
-                <th scope="col">#Id</th>
+                <th scope="col" class="text-danger">#Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Actions</th>
