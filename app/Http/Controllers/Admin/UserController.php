@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,6 +17,10 @@ class UserController extends Controller
     public function index()
     {
         // dd('Index method on User Controller');
+        
+        if(Gate::denies('logged-in')){
+            dd('no access allowed');
+        }
         $users = User::latest()->paginate(10);
         return view('admin.users.index',compact('users'));
     }
