@@ -63,7 +63,7 @@ class User extends Authenticatable
         return null !== $this->roles()->whereIn('name', $role)->first();
     }
 
-    public function setPasswordAttribute($password){
-        $this->attributes['password'] = Hash::make($password);    
-    }
+    // public function setPasswordAttribute($password){
+    //     $this->attributes['password'] = Hash::make($password);    
+    // }
 }
