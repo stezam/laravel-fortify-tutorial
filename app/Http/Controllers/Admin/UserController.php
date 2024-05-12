@@ -17,12 +17,12 @@ class UserController extends Controller
     public function index()
     {
         // dd('Index method on User Controller');
-        
-        if(Gate::denies('logged-in')){
+
+        if (Gate::denies('logged-in')) {
             dd('no access allowed');
         }
-        $users = User::latest()->paginate(10);
-        return view('admin.users.index',compact('users'));
+            $users = User::latest()->paginate(10);
+            return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -44,7 +44,7 @@ class UserController extends Controller
         $validatedData = $request->validated();
         $user = User::create($validatedData);
         $user->roles()->sync($request->roles);
-        $request->session()->flash('success', 'User created successfully!');        
+        $request->session()->flash('success', 'User created successfully!');
         return redirect()->route('admin.users.index');
     }
 
@@ -64,7 +64,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $user = User::find($id);
-        return view('admin.users.edit', compact('roles','user'));
+        return view('admin.users.edit', compact('roles', 'user'));
     }
 
     /**
@@ -74,9 +74,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        if(!$user){
-            $request->session()->flash('error', 'User cannot be updated!');      
-            return redirect()->route('admin.users.index');      
+        if (!$user) {
+            $request->session()->flash('error', 'User cannot be updated!');
+            return redirect()->route('admin.users.index');
         }
 
         $user->update($request->except(['_token', 'roles']));
