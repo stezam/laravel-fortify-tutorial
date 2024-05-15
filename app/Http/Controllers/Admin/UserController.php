@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -22,8 +23,8 @@ class UserController extends Controller
         if (Gate::denies('logged-in')) {
             dd('no access allowed');
         }
-            $users = User::latest()->paginate(10);
-            return view('admin.users.index', compact('users'));
+        $users = User::latest()->paginate(10);
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -46,8 +47,13 @@ class UserController extends Controller
         // $user = User::create($validatedData);
 
         $newUser = new CreateNewUser();
-        $user = $newUser->create($request->all());
+        // dd($request->only(['email']));
+        $user = $newUser->create($request->only(['name', 'email', 'password', 'password_confirmation']));
         $user->roles()->sync($request->roles);
+        // dd($request->only(['email']));
+
+        Password::sendResetLink($request->only('email'));
+
         $request->session()->flash('success', 'User created successfully!');
         return redirect()->route('admin.users.index');
     }
