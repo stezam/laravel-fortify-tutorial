@@ -1,7 +1,5 @@
 @extends('templates.main')
-
 @section('content')
-
 <h1>Sign In</h1>
 <div class="">
     <form action="{{route('password.email')}}" method="POST">
@@ -16,11 +14,7 @@
             </span>
             @enderror
         </div>
-
         <button type="submit" class="btn btn-primary">Reset Password</button>
-
-
     </form>
 </div>
-
 @endsection
