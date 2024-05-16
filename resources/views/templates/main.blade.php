@@ -41,7 +41,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         @auth
                         <li class="nav-item">
-                            <a href="{{ url('/') }}" class="nav-link">Home</a>                               
+                            <a href="{{ route('user.profile') }}" class="nav-link">Profile</a>                               
                         </li>
                         <li class="nav-item">
                             <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

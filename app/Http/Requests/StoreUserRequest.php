@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUserRequest extends FormRequest
@@ -21,10 +22,19 @@ class StoreUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user = $this->route('admin.user') ? $this->route('admin.user')->id : null;
+        // dd($user);
         return [
             'name' => 'required|max:255',
-            'email' => 'required|max:255|unique:users',
-            'password' => 'required|min:8|max:255'
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                 Rule::unique('users')->ignore($user),
+            ],
+                'password' => 'required|min:8|max:255'
+            
         ];
     }
 

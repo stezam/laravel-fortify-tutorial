@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,9 @@ Route::get('/', function () {
     return view('index');
 }); 
 
-
+Route::prefix('user')->middleware(['auth','verified'])->name('user.')->group(function(){
+    Route::get('profile', ProfileController::class)->name('profile');
+});
 
 //Admin Routes
 Route::prefix('admin')->middleware(['auth', 'auth.isAdmin','verified'])->name('admin.')->group(function(){
